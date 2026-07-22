@@ -23,8 +23,22 @@ GitHub Pages workflow in [`.github/workflows/pages.yml`](.github/workflows/pages
 | **Sweet talk (달콤한 말)** | 28 phrases across pet names, love notes, compliments, daily care, and basics — every one with a sound-alike **memory hook**, a "say it like" guide, politeness notes, favorites, and audio (normal + slow) |
 | **Practice (연습)** | Three 8-question quiz decks (letters, reading, phrases), saved best scores, and progress bars |
 
-Audio uses your device's built-in Korean text-to-speech voice (most phones and laptops
-have one). Progress, favorites, and scores are saved locally in your browser.
+Audio uses your device's built-in Korean text-to-speech. The app **ranks the available
+Korean voices and auto-picks the most natural one** (premium/neural/cloud voices first,
+legacy robotic voices last), and a **🔊 voice picker** in Sweet Talk lets you override it
+— your choice is remembered. Progress, favorites, and scores are saved locally in your
+browser.
+
+### Getting the best voice on each device
+
+| Device | One-time setup for a natural neural voice |
+|---|---|
+| **iPhone / iPad / Mac** | Settings → Accessibility → Spoken Content → Voices → Korean → download **Yuna (Enhanced or Premium)** |
+| **Android** | Install/update **Speech Recognition & Synthesis** (Google Speech Services) from the Play Store, and pick Google's Korean voice |
+| **Chrome on desktop** | Nothing to do — the app auto-selects the cloud voice “Google 한국어 ☁️” when online |
+| **Windows (Edge/other)** | Settings → Time & Language → Speech → Add voices → Korean |
+
+After installing a voice, reload the app and pick it under **🔊 voice** in the Sweet Talk tab.
 
 ## The memory method (why the silly hooks work)
 
