@@ -223,6 +223,8 @@ blockquote cite{display:block;font-style:normal;font-size:12px;color:var(--mut);
 .filter-bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin:18px 0 14px}
 .toggle{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink2);cursor:pointer;user-select:none}
 .toggle input{accent-color:var(--rose);width:16px;height:16px;cursor:pointer}
+.toggle select{font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:9px;padding:5px 8px;max-width:210px;cursor:pointer}
+.toggle select:focus-visible{outline:2.5px solid var(--focus);outline-offset:1px}
 
 /* ---------- alphabet composition chart ---------- */
 .bar-chart{margin-top:16px}
@@ -726,6 +728,8 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
     </div>
     <label class="toggle"><input type="checkbox" id="favOnly"> ★ favorites only</label>
     <label class="toggle"><input type="checkbox" id="hideRom"> hide romanization (test yourself)</label>
+    <label class="toggle" id="voiceRow" hidden>🔊 voice <select id="voiceSel" aria-label="Choose Korean voice"></select></label>
+    <span class="mini" style="flex-basis:100%">Best sound: iPhone → download the <b>Enhanced/Premium Korean voice</b> (Settings › Accessibility › Spoken Content › Voices), Android → Google Speech Services — then pick it under 🔊 voice.</span>
   </div>
   <div class="phrase-grid" id="phraseGrid"></div>
 </section>
@@ -964,17 +968,51 @@ try{const raw=localStorage.getItem('kk.v1'); if(raw) store=Object.assign(store,J
 function save(){try{localStorage.setItem('kk.v1',JSON.stringify(store));}catch(e){}}
 
 /* ============================== speech ============================== */
-let koVoice=null,voiceWarned=false;
-function pickVoice(){try{const vs=speechSynthesis.getVoices();koVoice=vs.find(v=>(v.lang||'').toLowerCase().startsWith('ko'))||null;}catch(e){}}
+/* Voice quality: devices usually ship several Korean voices and the first one
+   is often the worst (old robotic system voices). Rank them — premium/neural/
+   cloud voices first — and let the user override via the voice picker. */
+let koVoices=[],koVoice=null,voiceWarned=false;
+function rankVoice(v){
+  let s=0;const n=(v.name||'')+' '+(v.voiceURI||'');
+  if(/premium|enhanced|natural|neural|wavenet/i.test(n))s+=8;   // neural tiers
+  if(/siri/i.test(n))s+=7;
+  if(/yuna|sora|google|kyuri|nara|minsu|jian|suhyun/i.test(n))s+=4; // known good ko voices
+  if(v.localService===false)s+=3;                               // cloud voices (Chrome “Google 한국어”)
+  if(/heami|espeak|compact|eloquence/i.test(n))s-=6;            // legacy robots
+  return s;
+}
+function pickVoice(){
+  try{
+    koVoices=speechSynthesis.getVoices().filter(v=>(v.lang||'').toLowerCase().replace('_','-').startsWith('ko'));
+    const saved=store.voice&&koVoices.find(v=>v.voiceURI===store.voice);
+    koVoice=saved||koVoices.slice().sort((a,b)=>rankVoice(b)-rankVoice(a))[0]||null;
+    renderVoiceRow();
+  }catch(e){}
+}
+function renderVoiceRow(){
+  const row=$('#voiceRow'),sel=$('#voiceSel');
+  if(!row||!sel)return;
+  if(koVoices.length<2){row.hidden=true;return;}
+  row.hidden=false;
+  const cur=koVoice?koVoice.voiceURI:'';
+  sel.innerHTML=koVoices.map(v=>{
+    const uri=v.voiceURI.replace(/"/g,'&quot;');
+    const label=(v.name||'Korean voice').replace(/</g,'&lt;')+(v.localService===false?' ☁️':'');
+    return '<option value="'+uri+'"'+(v.voiceURI===cur?' selected':'')+'>'+label+'</option>';
+  }).join('');
+}
 if('speechSynthesis' in window){pickVoice();speechSynthesis.addEventListener('voiceschanged',pickVoice);}
 function say(txt,rate){
   if(!('speechSynthesis' in window)){toast('This device can’t speak — lean on the “say it like” guides 💗');return;}
   try{
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(txt);
-    u.lang='ko-KR'; if(koVoice)u.voice=koVoice; u.rate=rate||0.82;
+    u.lang='ko-KR'; if(koVoice)u.voice=koVoice; u.rate=rate||0.85;
     speechSynthesis.speak(u);
-    if(!koVoice&&!voiceWarned){voiceWarned=true;toast('No Korean voice found on this device — audio may sound off. The “say it like” guides are your backup.');}
+    if(!koVoice&&!voiceWarned){
+      voiceWarned=true;
+      toast('No Korean voice installed — iPhone: Settings › Accessibility › Spoken Content › Voices › Korean · Android: install Google Speech Services · then reload.');
+    }
   }catch(e){}
 }
 
@@ -1192,6 +1230,12 @@ $('#lvlFilters').addEventListener('click',e=>{
 });
 $('#favOnly').addEventListener('change',renderPhrases);
 $('#hideRom').addEventListener('change',e=>{$('#phraseGrid').classList.toggle('hide-rom',e.target.checked);});
+$('#voiceSel').addEventListener('change',e=>{
+  const v=koVoices.find(x=>x.voiceURI===e.target.value);
+  if(!v)return;
+  koVoice=v;store.voice=v.voiceURI;save();
+  say('안녕, 여보!');
+});
 renderPhrases();
 
 /* ============================== counts & progress ============================== */
