@@ -3,11 +3,13 @@
 A tiny, hand-built Korean learning app with one mission: **learn just enough Korean to
 say ridiculously cute things to your wife — and actually remember them.**
 
-**Live app (Claude Artifact):** https://claude.ai/code/artifact/12d53f90-6ffe-4515-9867-6e5dc02308b9
+**▶ Live app (permanent URL):** https://josiahdowdy.github.io/KoreanKutie/
 
-The same app lives in this repo as [`index.html`](index.html) — a single self-contained
-file (no build step, no dependencies, works offline). Open it locally, or enable GitHub
-Pages (Settings → Pages → deploy from `main` / root) to host it yourself.
+Also published as a Claude Artifact: https://claude.ai/code/artifact/12d53f90-6ffe-4515-9867-6e5dc02308b9
+
+The app is [`index.html`](index.html) — a single self-contained file (no build step, no
+dependencies, works offline). Every push to `main` redeploys it to the URL above via the
+GitHub Pages workflow in [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
 
 ---
 
