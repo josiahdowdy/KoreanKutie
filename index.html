@@ -184,6 +184,25 @@ main{max-width:1080px;margin:0 auto;padding:26px 20px 60px}
   .petal{display:none}
 }
 
+/* ---------- resume dashboard ---------- */
+.resume-card{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;padding:30px}
+.resume-copy{display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.resume-title{font-size:clamp(25px,4vw,34px);letter-spacing:-.3px;margin-top:1px}
+.btn-big{padding:13px 26px;font-size:16px;margin-top:6px}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.stripe{background:var(--card);border:1px solid var(--line-soft);border-radius:14px;padding:13px 15px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;text-align:left;transition:transform .15s ease,box-shadow .15s ease}
+.stripe:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+.s-lab{font-size:13px;font-weight:700;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-bar{display:block;height:7px;background:var(--card2);border-radius:99px;overflow:hidden}
+.s-bar i{display:block;height:100%;background:var(--rose);border-radius:99px;width:0%;transition:width .4s ease}
+.s-val{font-size:11.5px;color:var(--mut);font-weight:700;font-variant-numeric:tabular-nums}
+.tour{margin-top:2px}
+.tour summary{cursor:pointer;font-family:'Fredoka',ui-rounded,system-ui,sans-serif;font-weight:600;font-size:15px;color:var(--rose-text);list-style:none;display:flex;align-items:center;gap:7px;padding:6px 2px}
+.tour summary::-webkit-details-marker{display:none}
+.tour summary::before{content:'▸';display:inline-block;transition:transform .15s ease}
+.tour[open] summary::before{transform:rotate(90deg)}
+.tour-body{margin-top:14px;display:grid;gap:16px}
+
 /* ---------- stat tiles ---------- */
 .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
 .stat{background:var(--card2);border-radius:14px;padding:14px 16px}
@@ -263,6 +282,8 @@ blockquote cite{display:block;font-style:normal;font-size:12px;color:var(--mut);
 .lcard .lmeta{min-width:0}
 .lcard .lsound{font-weight:800;font-size:15px;line-height:1.2}
 .lcard .lname{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lcard-like{padding:0 14px 10px;font-size:12px;color:var(--ink2);line-height:1.4}
+.lcard-like b{color:var(--ink)}
 .lcard-detail{padding:0 14px 12px;font-size:13px;color:var(--ink2);display:none}
 .lcard.open .lcard-detail{display:block}
 .lcard-detail .hookbox{margin-top:8px;font-size:12.5px;padding:9px 11px}
@@ -363,6 +384,16 @@ blockquote cite{display:block;font-style:normal;font-size:12px;color:var(--mut);
 .pcard-detail .pnote{margin-top:10px;font-size:13px}
 .pcard-detail .pnote b{color:var(--ink)}
 .hide-rom .p-rom,.hide-rom .pcard-detail .say{display:none}
+.hide-rom .soundmap .sr{display:none}
+.pcard-click{display:block;width:100%;text-align:left}
+.soundmap{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}
+.smchip{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--card2);border:1px solid var(--line-soft);border-radius:10px;padding:6px 10px;min-width:36px;transition:all .12s ease}
+.smchip:hover{border-color:var(--rose);transform:translateY(-1px)}
+.smchip .sk{font-size:17px;font-weight:800;line-height:1}
+.smchip .sr{font-size:10.5px;color:var(--mut);line-height:1}
+.smchip.stress{background:var(--rose-soft)}
+.smchip.stress .sk{color:var(--rose-text)}
+.smchip.stress .sr{color:var(--rose-text);font-weight:800}
 .pcard-foot{margin-top:auto;display:flex;border-top:1px solid var(--line-soft)}
 .pcard-foot button{flex:1;padding:9px 6px;font-size:13px;color:var(--ink2);display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .pcard-foot button:hover{background:var(--card2);color:var(--rose-text)}
@@ -370,6 +401,36 @@ blockquote cite{display:block;font-style:normal;font-size:12px;color:var(--mut);
 .pcard-foot .gotit[aria-pressed="true"]{color:var(--teal);font-weight:700}
 .aegyo-tips{display:grid;gap:8px;margin-top:12px}
 .aegyo-tips .trap .tk{min-width:96px}
+
+/* ---------- story time ---------- */
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.book-grid[hidden],.reader[hidden]{display:none}
+.book-card{background:var(--card);border:1px solid var(--line-soft);border-radius:18px;box-shadow:var(--shadow);padding:22px 18px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:7px;transition:transform .15s ease,box-shadow .15s ease}
+.book-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.book-card.done{border-color:var(--teal)}
+.book-cover{font-size:52px;line-height:1}
+.book-title{font-family:'Fredoka',ui-rounded,system-ui,sans-serif;font-weight:600;font-size:17px;margin-top:4px}
+.book-sub{font-size:12.5px;color:var(--mut)}
+.book-meta{font-size:12px;color:var(--ink2);margin-top:2px}
+.book-done-badge{font-size:11px;font-weight:800;color:var(--teal);background:var(--teal-soft);border-radius:99px;padding:3px 10px;margin-top:4px}
+.reader-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.reader-title{font-family:'Fredoka',ui-rounded,system-ui,sans-serif;font-weight:600;font-size:16.5px}
+.reader-pos{margin-left:auto;font-size:12.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.reader-page{text-align:center;padding:14px 0 4px}
+.reader-emoji{font-size:clamp(58px,13vw,90px);line-height:1.15}
+.reader-ko{font-size:clamp(21px,4.2vw,28px);font-weight:800;margin-top:12px;line-height:1.4;display:inline-block}
+.reader-ko:hover{color:var(--rose-text)}
+.reader-peek{margin-top:12px;background:var(--card2);border-radius:12px;padding:11px 16px;display:inline-block}
+.reader-peek[hidden]{display:none}
+.reader-rom{color:var(--rose-text);font-weight:700;font-size:14.5px}
+.reader-en{color:var(--ink2);font-size:14px;margin-top:2px}
+.reader-actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.reader-dots{display:flex;justify-content:center;gap:6px;margin:20px 0 4px}
+.reader-dots i{width:8px;height:8px;border-radius:50%;background:var(--line);font-style:normal}
+.reader-dots i.on{background:var(--rose)}
+.reader-nav{display:flex;justify-content:space-between;gap:10px;margin-top:12px}
+.reader-nav .btn{flex:1;justify-content:center}
+.reader-nav .btn:disabled{opacity:.4;pointer-events:none}
 
 /* ---------- practice ---------- */
 .deck-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
@@ -416,13 +477,14 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
 
 /* ---------- responsive ---------- */
 @media (max-width:860px){
-  .hero{grid-template-columns:1fr;gap:18px;padding-top:18px}
+  .resume-card{grid-template-columns:1fr;gap:18px;padding:22px}
   .hero-tiles{order:-1}
   .builder{grid-template-columns:1fr}
   .builder-out{position:static}
 }
 @media (max-width:680px){
-  .stat-row,.steps3,.block-demos,.decode,.deck-row,.ritual{grid-template-columns:1fr 1fr}
+  .stat-row,.steps3,.block-demos,.decode,.deck-row,.ritual,.book-grid{grid-template-columns:1fr 1fr}
+  .strip{grid-template-columns:1fr 1fr}
   .quiz-opts{grid-template-columns:1fr}
   .polite-scale{grid-template-columns:1fr}
   .pz1,.pz3{border-radius:12px}
@@ -432,9 +494,10 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
   main{padding:18px 14px 50px}
   .topbar-in{padding:8px 12px}
   .logo .hangeul{display:none}
+  .reader-nav{flex-direction:column-reverse}
 }
 @media (max-width:420px){
-  .stat-row,.steps3,.block-demos,.decode,.deck-row,.ritual{grid-template-columns:1fr}
+  .stat-row,.steps3,.block-demos,.decode,.deck-row,.ritual,.book-grid{grid-template-columns:1fr}
   .tile{border-radius:18px}
 }
 </style>
@@ -449,6 +512,7 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
       <button role="tab" data-tab="hangul" aria-selected="false">Alphabet<small>한글</small></button>
       <button role="tab" data-tab="read" aria-selected="false">Read<small>읽기</small></button>
       <button role="tab" data-tab="sweet" aria-selected="false">Sweet talk<small>달콤한 말</small></button>
+      <button role="tab" data-tab="books" aria-selected="false">Stories<small>동화</small></button>
       <button role="tab" data-tab="practice" aria-selected="false">Practice<small>연습</small></button>
     </nav>
     <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
@@ -459,15 +523,12 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
 
 <!-- ================================ START ================================ -->
 <section id="start" class="tab-panel">
-  <div class="hero">
-    <div class="hero-copy">
-      <span class="eyebrow">A tiny Korean course with one mission</span>
-      <h1>Small words.<br>Big swoon.</h1>
-      <p class="sub">Learn just enough Korean to whisper ridiculously cute things to your wife — and actually remember them, because every phrase comes with a silly sound-picture your brain can't let go of.</p>
-      <div class="hero-cta">
-        <button class="btn btn-primary" data-goto="hangul">Start with the alphabet</button>
-        <button class="btn btn-ghost" data-goto="sweet">Skip to sweet talk 💗</button>
-      </div>
+  <div class="card resume-card">
+    <div class="resume-copy">
+      <span class="eyebrow" id="resumeEyebrow">Pick up where you left off</span>
+      <h1 class="resume-title" id="resumeTitle">Welcome back 💗</h1>
+      <p class="note" id="resumeStatus"></p>
+      <button class="btn btn-primary btn-big" id="resumeBtn">Continue</button>
     </div>
     <div class="hero-tiles">
       <span class="petal" style="left:8%;top:0">✿</span>
@@ -484,41 +545,36 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
     </div>
   </div>
 
-  <div class="stack">
-    <div class="card">
-      <h3>Why this takes a weekend, not a year</h3>
-      <p class="note">Korean writing looks mysterious, but it's not thousands of characters — it's a 24-letter alphabet wearing a costume. A king literally designed it in 1443 so ordinary people could learn it fast.</p>
-      <div class="stat-row">
-        <div class="stat"><div class="v">24</div><div class="l">basic letters — that's all you need to start reading</div></div>
-        <div class="stat"><div class="v">~90 min</div><div class="l">for most people to sound out their first words</div></div>
-        <div class="stat"><div class="v">1443</div><div class="l">the year King Sejong invented Hangul for everyone</div></div>
-      </div>
-      <blockquote class="ko">“A wise man can acquaint himself with them before the morning is over; even a fool can learn them in the space of ten days.”
-        <cite>— Hunminjeongeum Haerye, the document introducing Hangul (1446)</cite>
-      </blockquote>
-    </div>
+  <div class="strip">
+    <button class="stripe" data-goto="hangul"><span class="s-lab"><b class="ko">한글</b> Alphabet</span><span class="s-bar"><i id="spAlpha"></i></span><span class="s-val" id="svAlpha">0/35</span></button>
+    <button class="stripe" data-goto="sweet"><span class="s-lab">💗 Sweet talk</span><span class="s-bar"><i id="spSweet"></i></span><span class="s-val" id="svSweet">0/28</span></button>
+    <button class="stripe" data-goto="books"><span class="s-lab">📖 Stories</span><span class="s-bar"><i id="spBooks"></i></span><span class="s-val" id="svBooks">0/4</span></button>
+    <button class="stripe" data-goto="practice"><span class="s-lab">✏️ Practice</span><span class="s-bar"><i id="spQuiz"></i></span><span class="s-val" id="svQuiz">best 0/8</span></button>
+  </div>
 
-    <div class="card">
-      <h3>The memory trick this app runs on</h3>
-      <p class="note">It's the <b>keyword method</b>: your brain files new sounds under pictures it already owns. The sillier the picture — and the more emotion attached — the harder it sticks. Saying it to someone you love while she laughs at you? That's industrial-strength glue.</p>
-      <div class="steps3">
-        <div class="step3"><span class="ic">👂</span><b>Hear it</b><p>Tap the speaker on any word. Echo it out loud — mouths remember better than eyes.</p></div>
-        <div class="step3"><span class="ic">🎬</span><b>Picture it</b><p>Every phrase has a hook — an English sound-alike scene:</p><p class="ex-line"><i>saranghae</i> = love <b>RANG</b> the doorbell, you shout “<b>HEY!</b>”</p></div>
-        <div class="step3"><span class="ic">💬</span><b>Say it to her</b><p>Use one phrase per day on your wife. Real reactions become permanent memories.</p></div>
+  <details class="tour">
+    <summary>New here? 60-second tour</summary>
+    <div class="tour-body">
+      <div>
+        <p class="note">Korean writing looks mysterious, but it's a 24-letter alphabet wearing a costume — a king designed it in 1443 so ordinary people could learn it fast.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="v">24</div><div class="l">basic letters — all you need to start reading</div></div>
+          <div class="stat"><div class="v">~90 min</div><div class="l">for most people to sound out their first words</div></div>
+          <div class="stat"><div class="v">1443</div><div class="l">the year King Sejong invented Hangul for everyone</div></div>
+        </div>
       </div>
-      <span class="tip-chip">✨ Upgrade any hook: put <b>her</b> in the scene. Your brain never deletes a movie she stars in.</span>
-    </div>
-
-    <div class="card">
-      <h3>Your route</h3>
+      <p class="note">The memory trick: your brain files new sounds under pictures it already owns. <i>Saranghae</i> → love <b>RANG</b> the doorbell, you shout “<b>HEY!</b>” The sillier the picture, the harder it sticks — especially once you say it to her.</p>
       <div class="roadmap">
-        <button class="road-step" data-goto="hangul"><span class="n">1</span><span><b>Meet the alphabet</b><p>28 letter cards with shape + sound hooks</p></span><span class="t">~90 min</span></button>
+        <button class="road-step" data-goto="hangul"><span class="n">1</span><span><b>Meet the alphabet</b><p>35 letter cards with shape + sound hooks</p></span><span class="t">~90 min</span></button>
         <button class="road-step" data-goto="read"><span class="n">2</span><span><b>Stack letters into blocks</b><p>Build syllables yourself — decode 사랑해</p></span><span class="t">~20 min</span></button>
         <button class="road-step" data-goto="sweet"><span class="n">3</span><span><b>Learn the sweet talk</b><p>28 phrases: basics, care, compliments, love notes</p></span><span class="t">1 a day</span></button>
-        <button class="road-step" data-goto="practice"><span class="n">4</span><span><b>Quiz yourself</b><p>Two minutes a day. Watch the bars fill up.</p></span><span class="t">daily</span></button>
+        <button class="road-step" data-goto="books"><span class="n">4</span><span><b>Read a story</b><p>Illustrated picture books for extra practice</p></span><span class="t">~10 min</span></button>
+        <button class="road-step" data-goto="practice"><span class="n">5</span><span><b>Quiz yourself</b><p>Two minutes a day. Watch the bars fill up.</p></span><span class="t">daily</span></button>
       </div>
     </div>
+  </details>
 
+  <div class="stack">
     <div class="card potd" id="potdCard">
       <span class="eyebrow">Today's phrase for her</span>
       <div class="kor ko" id="potdKor"></div>
@@ -540,7 +596,7 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
     <span class="ko-sub">han-geul</span>
     <span class="count-chip" id="letterCount">♥ 0/35 learned</span>
   </div>
-  <p class="lede">Hangul letters are little diagrams: consonants sketch what your <b>mouth</b> does; vowels are built from a person (ㅣ), the ground (ㅡ), and the sun. Tap any card for its memory hook, then tap the heart when it's yours.</p>
+  <p class="lede">Hangul letters are little diagrams: consonants sketch what your <b>mouth</b> does; vowels are built from a person (ㅣ), the ground (ㅡ), and the sun. Every card also shows a plain-English "sounds like" line — no phonetics degree required. Tap for the memory hook, 🐢 to hear the example word slowed down, and the heart when it's yours.</p>
 
   <div class="card">
     <h3>The whole alphabet in one bar</h3>
@@ -562,12 +618,13 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
   </div>
 
   <div class="card">
-    <h3>Seven sound traps (read this once, save weeks)</h3>
+    <h3>Sound traps (read this once, save weeks)</h3>
     <div class="traps">
+      <div class="trap"><span class="tk">steady beat</span><p>Korean is <b>syllable-timed</b> — every block gets roughly the same length, like a metronome: sa · rang · hae, three even beats. English leans hard on one syllable (sa-RANG-hae); Korean stays level. Tap the syllable chips on any Sweet Talk card to feel the difference.</p></div>
       <div class="trap"><span class="tk">eo = “uh”</span><p>The romanization lies. 서울 (Seoul) = <b>“suh-ool”</b>, never “see-oh”. 예뻐 = ye-<b>ppuh</b>.</p></div>
       <div class="trap"><span class="tk">eu = “euh”</span><p>The flat grunt — say “oo” with unrounded, flat lips. The sound of lifting groceries.</p></div>
       <div class="trap"><span class="tk">ㄹ = r + l</span><p>One quick tongue-tap on the roof of the mouth, halfway between <b>r</b> and <b>l</b>. Don't roll it, don't hold it.</p></div>
-      <div class="trap"><span class="tk">twins = tense</span><p>ㅃ ㄸ ㄲ ㅆ ㅉ are squeezed, with <b>zero puff of air</b>. Palm test: 파 puffs on your hand, 빠 doesn't.</p></div>
+      <div class="trap"><span class="tk">twins = tense</span><p>ㅃ ㄸ ㄲ ㅆ ㅉ are squeezed, with <b>zero puff of air</b>. The trick: say “spy”, “sky”, or “star” and isolate just the p/k/t — that's exactly the tense sound, no special mouth needed.</p></div>
       <div class="trap"><span class="tk">s → “sh”</span><p>ㅅ turns to <b>sh</b> before i/y sounds: 싶어 = “<b>shee</b>-puh”, not “see-puh”.</p></div>
       <div class="trap"><span class="tk">ㅇ two jobs</span><p>Silent placeholder at the front of a block; a hummed “<b>ng</b>” in the basement. 안녕 uses both.</p></div>
       <div class="trap"><span class="tk">soft endings</span><p>Final consonants are unreleased: 밥 (bap) ends with lips <b>closed</b> — no “puh” escapes.</p></div>
@@ -689,7 +746,7 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
     <span class="ko-sub">dal-kom-han mal</span>
     <span class="count-chip" id="phraseCount">✓ 0/28 in your pocket</span>
   </div>
-  <p class="lede">Every card carries a memory hook — an English sound-alike scene. Read the hook once, say the phrase three times out loud, then go use it on her. Tap a card to open it.</p>
+  <p class="lede">Every card carries a memory hook — an English sound-alike scene. Tap any syllable chip below a phrase to hear just that beat, or press 🐢 sound it out for a slow, syllable-by-syllable readout — that's genuinely how native speakers break down a new word. Read the hook once, say the phrase three times out loud, then go use it on her.</p>
 
   <div class="card">
     <h3>One dial: how sweet vs. how polite</h3>
@@ -734,6 +791,43 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
     <span class="mini" style="flex-basis:100%">Best sound: iPhone → download the <b>Enhanced/Premium Korean voice</b> (Settings › Accessibility › Spoken Content › Voices), Android → Google Speech Services — then pick it under 🔊 voice.</span>
   </div>
   <div class="phrase-grid" id="phraseGrid"></div>
+</section>
+
+<!-- ================================ STORY TIME ================================ -->
+<section id="books" class="tab-panel" hidden>
+  <div class="section-head">
+    <h2>Story time <span class="ko">동화</span></h2>
+    <span class="ko-sub">dong-hwa</span>
+    <span class="count-chip" id="bookCount">📖 0/4 finished</span>
+  </div>
+  <p class="lede">Four tiny illustrated books, just like the ones kids learn to read with — one picture, one simple sentence per page. Tap a cover to start, 🔊 to hear each page, 👀 to check yourself.</p>
+
+  <div class="book-grid" id="bookGrid"></div>
+
+  <div class="card reader" id="bookReader" hidden>
+    <div class="reader-head">
+      <button class="btn btn-ghost" id="readerBack">← All stories</button>
+      <span class="reader-title" id="readerTitle"></span>
+      <span class="reader-pos" id="readerPos"></span>
+    </div>
+    <div class="reader-page">
+      <div class="reader-emoji" id="readerEmoji"></div>
+      <button class="reader-ko ko" id="readerKo" aria-label="Hear this page again"></button>
+      <div class="reader-peek" id="readerPeek" hidden>
+        <div class="reader-rom" id="readerRom"></div>
+        <div class="reader-en" id="readerEn"></div>
+      </div>
+      <div class="reader-actions">
+        <button class="speak-btn" id="readerHear">🔊 hear</button>
+        <button class="btn btn-ghost" id="readerPeekBtn">👀 peek meaning</button>
+      </div>
+    </div>
+    <div class="reader-dots" id="readerDots"></div>
+    <div class="reader-nav">
+      <button class="btn btn-ghost" id="readerPrev">← Back</button>
+      <button class="btn btn-primary" id="readerNext">Next →</button>
+    </div>
+  </div>
 </section>
 
 <!-- ================================ PRACTICE ================================ -->
@@ -805,44 +899,44 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
 /* ============================== data ============================== */
 const LETTERS=[
  // --- basic consonants (14)
- {ch:'ㄱ',type:'c',name:'기역 giyeok',sound:'g / k',hook:'A pistol aimed right — G for Gun.',ex:['고마워','gomawo','thanks']},
- {ch:'ㄴ',type:'c',name:'니은 nieun',sound:'n',hook:'A bent kNee, kneeling — N.',ex:['남편','nampyeon','husband (that’s you)']},
- {ch:'ㄷ',type:'c',name:'디귿 digeut',sound:'d / t',hook:'A Doorframe tipped on its side — D.',ex:['다녀와','danyeowa','come back safe']},
- {ch:'ㄹ',type:'c',name:'리을 rieul',sound:'r / l (tap)',hook:'A wiggly River — the tongue taps like water over rocks, halfway between r and l.',ex:['사랑','sarang','love']},
- {ch:'ㅁ',type:'c',name:'미음 mieum',sound:'m',hook:'A closed Mouth, lips pressed — mmm.',ex:['엄마','eomma','mom']},
- {ch:'ㅂ',type:'c',name:'비읍 bieup',sound:'b / p',hook:'A Bucket with two handles — B.',ex:['여보','yeobo','honey']},
- {ch:'ㅅ',type:'c',name:'시옷 siot',sound:'s (sh before i)',hook:'A Ski Slope — S slides down it. Before “i” it softens to sh.',ex:['싶어','sipeo','want to (“shee-puh”)']},
- {ch:'ㅇ',type:'c',name:'이응 ieung',sound:'silent → ng',hook:'A dOnut: empty (silent) at the front of a block, chewy “ng” in the basement.',ex:['안녕','annyeong','hi — uses both jobs']},
- {ch:'ㅈ',type:'c',name:'지읒 jieut',sound:'j',hook:'The ski slope wearing a lid — a Jar with its lid on. J.',ex:['자기야','jagiya','babe']},
- {ch:'ㅊ',type:'c',name:'치읓 chieut',sound:'ch',hook:'The jar starts steaming — a CHimney puff on top. ch = j + breath.',ex:['최고','choego','the best']},
- {ch:'ㅋ',type:'c',name:'키읔 kieuk',sound:'k (airy)',hook:'The gun Kocked with an extra bar — k = g plus a puff of air.',ex:['커피','keopi','coffee']},
- {ch:'ㅌ',type:'c',name:'티읕 tieut',sound:'t (airy)',hook:'The door grows a shelf — a Toaster rack. t = d + air.',ex:['토끼','tokki','bunny']},
- {ch:'ㅍ',type:'c',name:'피읖 pieup',sound:'p (airy)',hook:'It literally looks like Pi (π) — P. p = b + air.',ex:['파티','pati','party']},
- {ch:'ㅎ',type:'c',name:'히읗 hieut',sound:'h',hook:'A person in a Hat, breathing out — hhh.',ex:['해','hae','the 해 in 사랑해']},
+ {ch:'ㄱ',type:'c',name:'기역 giyeok',sound:'g / k',hook:'A pistol aimed right — G for Gun.',ex:['고마워','gomawo','thanks'],like:'like the <b>g</b> in “go” — a bit softer'},
+ {ch:'ㄴ',type:'c',name:'니은 nieun',sound:'n',hook:'A bent kNee, kneeling — N.',ex:['남편','nampyeon','husband (that’s you)'],like:'like the <b>n</b> in “no”'},
+ {ch:'ㄷ',type:'c',name:'디귿 digeut',sound:'d / t',hook:'A Doorframe tipped on its side — D.',ex:['다녀와','danyeowa','come back safe'],like:'like the <b>d</b> in “dog” — a bit softer'},
+ {ch:'ㄹ',type:'c',name:'리을 rieul',sound:'r / l (tap)',hook:'A wiggly River — the tongue taps like water over rocks, halfway between r and l.',ex:['사랑','sarang','love'],like:'like the <b>tt</b> in British “buTTer” — one quick tap'},
+ {ch:'ㅁ',type:'c',name:'미음 mieum',sound:'m',hook:'A closed Mouth, lips pressed — mmm.',ex:['엄마','eomma','mom'],like:'like the <b>m</b> in “mom”'},
+ {ch:'ㅂ',type:'c',name:'비읍 bieup',sound:'b / p',hook:'A Bucket with two handles — B.',ex:['여보','yeobo','honey'],like:'like the <b>b</b> in “boy” — a bit softer'},
+ {ch:'ㅅ',type:'c',name:'시옷 siot',sound:'s (sh before i)',hook:'A Ski Slope — S slides down it. Before “i” it softens to sh.',ex:['싶어','sipeo','want to (“shee-puh”)'],like:'like the <b>s</b> in “sun” — but “sh” as in “she” before i/y'},
+ {ch:'ㅇ',type:'c',name:'이응 ieung',sound:'silent → ng',hook:'A dOnut: empty (silent) at the front of a block, chewy “ng” in the basement.',ex:['안녕','annyeong','hi — uses both jobs'],like:'silent up front; like the <b>ng</b> in “sing” at the end'},
+ {ch:'ㅈ',type:'c',name:'지읒 jieut',sound:'j',hook:'The ski slope wearing a lid — a Jar with its lid on. J.',ex:['자기야','jagiya','babe'],like:'like the <b>j</b> in “jam”'},
+ {ch:'ㅊ',type:'c',name:'치읓 chieut',sound:'ch',hook:'The jar starts steaming — a CHimney puff on top. ch = j + breath.',ex:['최고','choego','the best'],like:'like the <b>ch</b> in “chop” — with a puff of air'},
+ {ch:'ㅋ',type:'c',name:'키읔 kieuk',sound:'k (airy)',hook:'The gun Kocked with an extra bar — k = g plus a puff of air.',ex:['커피','keopi','coffee'],like:'like the <b>k</b> in “kite” — with a strong puff of air'},
+ {ch:'ㅌ',type:'c',name:'티읕 tieut',sound:'t (airy)',hook:'The door grows a shelf — a Toaster rack. t = d + air.',ex:['토끼','tokki','bunny'],like:'like the <b>t</b> in “top” — with a strong puff of air'},
+ {ch:'ㅍ',type:'c',name:'피읖 pieup',sound:'p (airy)',hook:'It literally looks like Pi (π) — P. p = b + air.',ex:['파티','pati','party'],like:'like the <b>p</b> in “pop” — with a strong puff of air'},
+ {ch:'ㅎ',type:'c',name:'히읗 hieut',sound:'h',hook:'A person in a Hat, breathing out — hhh.',ex:['해','hae','the 해 in 사랑해'],like:'like the <b>h</b> in “hi”'},
  // --- basic vowels (10)
- {ch:'ㅏ',type:'v',name:'아 a',sound:'“ah”',hook:'A person with an arm pointing east, mouth open wide: “Ahh!”',ex:['사랑','sarang','love']},
- {ch:'ㅑ',type:'v',name:'야 ya',sound:'“yah”',hook:'Two arms east — the double stroke adds a y: “Yah!”',ex:['자기야','jagiya','the ya you call her with']},
- {ch:'ㅓ',type:'v',name:'어 eo',sound:'“uh”',hook:'Arm pointing west, caught off guard: “Uh…” (Romanized “eo” — trap №1!)',ex:['예뻐','yeppeo','pretty (“yeh-ppuh”)']},
- {ch:'ㅕ',type:'v',name:'여 yeo',sound:'“yuh”',hook:'Two arms west: “Yuh.”',ex:['여보','yeobo','honey']},
- {ch:'ㅗ',type:'v',name:'오 o',sound:'“oh”',hook:'A sprout growing UP from the ground: “Oh! It’s alive!”',ex:['보고','bogo','the bo in “I miss you”']},
- {ch:'ㅛ',type:'v',name:'요 yo',sound:'“yo”',hook:'Twin sprouts bouncing up — a yo-yo.',ex:['요','yo','the politeness cherry on top']},
- {ch:'ㅜ',type:'v',name:'우 u',sound:'“oo”',hook:'Roots growing DOWN: “ooh, underground.”',ex:['우리','uri','we / our']},
- {ch:'ㅠ',type:'v',name:'유 yu',sound:'“you”',hook:'Droopy crying legs — Koreans literally type ㅠㅠ as a sobbing face. “Boo-hoo, yu.”',ex:['ㅠㅠ','yu-yu','the crying emoji itself']},
- {ch:'ㅡ',type:'v',name:'으 eu',sound:'flat “euh”',hook:'The flat ground itself. Say “oo” with a flat grimace — the groceries-lifting grunt.',ex:['오늘','oneul','today']},
- {ch:'ㅣ',type:'v',name:'이 i',sound:'“ee”',hook:'A tall standing person going “wheee” — ee!',ex:['자기','jagi','babe']},
+ {ch:'ㅏ',type:'v',name:'아 a',sound:'“ah”',hook:'A person with an arm pointing east, mouth open wide: “Ahh!”',ex:['사랑','sarang','love'],like:'like the <b>a</b> in “father”'},
+ {ch:'ㅑ',type:'v',name:'야 ya',sound:'“yah”',hook:'Two arms east — the double stroke adds a y: “Yah!”',ex:['자기야','jagiya','the ya you call her with'],like:'like the <b>ya</b> in “yacht”'},
+ {ch:'ㅓ',type:'v',name:'어 eo',sound:'“uh”',hook:'Arm pointing west, caught off guard: “Uh…” (Romanized “eo” — trap №1!)',ex:['예뻐','yeppeo','pretty (“yeh-ppuh”)'],like:'like the <b>u</b> in “cup” — NOT like “oh”'},
+ {ch:'ㅕ',type:'v',name:'여 yeo',sound:'“yuh”',hook:'Two arms west: “Yuh.”',ex:['여보','yeobo','honey'],like:'like “young” said fast, minus the “ng”'},
+ {ch:'ㅗ',type:'v',name:'오 o',sound:'“oh”',hook:'A sprout growing UP from the ground: “Oh! It’s alive!”',ex:['보고','bogo','the bo in “I miss you”'],like:'like the <b>o</b> in “go”'},
+ {ch:'ㅛ',type:'v',name:'요 yo',sound:'“yo”',hook:'Twin sprouts bouncing up — a yo-yo.',ex:['요','yo','the politeness cherry on top'],like:'like the <b>yo</b> in “yo-yo”'},
+ {ch:'ㅜ',type:'v',name:'우 u',sound:'“oo”',hook:'Roots growing DOWN: “ooh, underground.”',ex:['우리','uri','we / our'],like:'like the <b>oo</b> in “food”'},
+ {ch:'ㅠ',type:'v',name:'유 yu',sound:'“you”',hook:'Droopy crying legs — Koreans literally type ㅠㅠ as a sobbing face. “Boo-hoo, yu.”',ex:['ㅠㅠ','yu-yu','the crying emoji itself'],like:'like the word “<b>you</b>”'},
+ {ch:'ㅡ',type:'v',name:'으 eu',sound:'flat “euh”',hook:'The flat ground itself. Say “oo” with a flat grimace — the groceries-lifting grunt.',ex:['오늘','oneul','today'],like:'like the <b>oo</b> in “good” — but flat, unrounded lips'},
+ {ch:'ㅣ',type:'v',name:'이 i',sound:'“ee”',hook:'A tall standing person going “wheee” — ee!',ex:['자기','jagi','babe'],like:'like the <b>ee</b> in “see”'},
  // --- tense twins (5)
- {ch:'ㄲ',type:'d',name:'쌍기역 ssang-giyeok',sound:'kk (tense)',hook:'Twin guns, squeezed tight — no air escapes.',ex:['꿈','kkum','dream']},
- {ch:'ㄸ',type:'d',name:'쌍디귿 ssang-digeut',sound:'tt (tense)',hook:'Twin doors slammed — tense t.',ex:['딸기','ttalgi','strawberry']},
- {ch:'ㅃ',type:'d',name:'쌍비읍 ssang-bieup',sound:'pp (tense)',hook:'Twin buckets = pure pucker, zero puff.',ex:['뽀뽀','ppoppo','a peck-kiss 💋']},
- {ch:'ㅆ',type:'d',name:'쌍시옷 ssang-siot',sound:'ss (tense)',hook:'Twin ski slopes — a sharp, hissed ss.',ex:['있어','isseo','stay / there is']},
- {ch:'ㅉ',type:'d',name:'쌍지읒 ssang-jieut',sound:'jj (tense)',hook:'Twin jars — clenched j.',ex:['짜장면','jjajangmyeon','date-night noodles']},
+ {ch:'ㄲ',type:'d',name:'쌍기역 ssang-giyeok',sound:'kk (tense)',hook:'Twin guns, squeezed tight — no air escapes.',ex:['꿈','kkum','dream'],like:'a tight, hard k — say “s<b>k</b>y”, keep just that k (no puff of air)'},
+ {ch:'ㄸ',type:'d',name:'쌍디귿 ssang-digeut',sound:'tt (tense)',hook:'Twin doors slammed — tense t.',ex:['딸기','ttalgi','strawberry'],like:'a tight, hard t — say “s<b>t</b>ar”, keep just that t (no puff of air)'},
+ {ch:'ㅃ',type:'d',name:'쌍비읍 ssang-bieup',sound:'pp (tense)',hook:'Twin buckets = pure pucker, zero puff.',ex:['뽀뽀','ppoppo','a peck-kiss 💋'],like:'a tight, hard p — say “s<b>p</b>y”, keep just that p (no puff of air)'},
+ {ch:'ㅆ',type:'d',name:'쌍시옷 ssang-siot',sound:'ss (tense)',hook:'Twin ski slopes — a sharp, hissed ss.',ex:['있어','isseo','stay / there is'],like:'a tight, hard s — like the <b>ss</b> in “hiss”, extra sharp'},
+ {ch:'ㅉ',type:'d',name:'쌍지읒 ssang-jieut',sound:'jj (tense)',hook:'Twin jars — clenched j.',ex:['짜장면','jjajangmyeon','date-night noodles'],like:'a tight, hard j — like the <b>ds</b> in “kids” said sharply'},
  // --- combo vowels you'll actually meet (6 of 11)
- {ch:'ㅐ',type:'x',name:'애 ae',sound:'“eh”',hook:'ㅏ+ㅣ mashed = “eh” as in bed. The 해 in saranghae.',ex:['해','hae','(I love) you-know-what']},
- {ch:'ㅔ',type:'x',name:'에 e',sound:'“eh”',hook:'ㅓ+ㅣ — in modern speech it sounds identical to ㅐ. Twins.',ex:['네','ne','yes (polite)']},
- {ch:'ㅘ',type:'x',name:'와 wa',sound:'“wah”',hook:'“oh”+“ah” said fast = wa. Korean for “wow” is literally 와!',ex:['와','wa','wow!']},
- {ch:'ㅝ',type:'x',name:'워 wo',sound:'“wuh”',hook:'“oo”+“uh” said fast = wuh.',ex:['줘','jwo','gimme~ (안아줘!)']},
- {ch:'ㅟ',type:'x',name:'위 wi',sound:'“wee”',hook:'“oo”+“ee” = wee!',ex:['귀여워','gwiyeowo','cute']},
- {ch:'ㅚ',type:'x',name:'외 oe',sound:'“weh”',hook:'Looks like o+i, sounds like “weh”. Korean’s little prank.',ex:['최고','choego','the best (“chweh-go”)']},
+ {ch:'ㅐ',type:'x',name:'애 ae',sound:'“eh”',hook:'ㅏ+ㅣ mashed = “eh” as in bed. The 해 in saranghae.',ex:['해','hae','(I love) you-know-what'],like:'like the <b>e</b> in “bed”'},
+ {ch:'ㅔ',type:'x',name:'에 e',sound:'“eh”',hook:'ㅓ+ㅣ — in modern speech it sounds identical to ㅐ. Twins.',ex:['네','ne','yes (polite)'],like:'like the <b>e</b> in “bed” — identical to ㅐ these days'},
+ {ch:'ㅘ',type:'x',name:'와 wa',sound:'“wah”',hook:'“oh”+“ah” said fast = wa. Korean for “wow” is literally 와!',ex:['와','wa','wow!'],like:'like the <b>wa</b> in “wand”'},
+ {ch:'ㅝ',type:'x',name:'워 wo',sound:'“wuh”',hook:'“oo”+“uh” said fast = wuh.',ex:['줘','jwo','gimme~ (안아줘!)'],like:'like the <b>wo</b> in “won” (the currency)'},
+ {ch:'ㅟ',type:'x',name:'위 wi',sound:'“wee”',hook:'“oo”+“ee” = wee!',ex:['귀여워','gwiyeowo','cute'],like:'like the <b>wee</b> in “weed”'},
+ {ch:'ㅚ',type:'x',name:'외 oe',sound:'“weh”',hook:'Looks like o+i, sounds like “weh”. Korean’s little prank.',ex:['최고','choego','the best (“chweh-go”)'],like:'like the <b>we</b> in “wet”'},
 ];
 
 const PHRASES=[
@@ -950,6 +1044,45 @@ const SYLLS=[
  ['끼','kki'],['딸','ttal'],['밥','bap'],['잘','jal'],['꿔','kkwo'],['응','eung'],['미','mi'],['안','an'],
 ];
 
+/* simple illustrated picture books — one sentence + one picture per page */
+const BOOKS=[
+ {id:'family',title:'우리 가족',rom:'uri gajok',en:'Our Family',cover:'👨‍👩‍👧‍👦',pages:[
+   {emoji:'👨',ko:'이 사람은 아빠예요.',rom:'i saram-eun appa-yeyo.',en:'This person is Dad.'},
+   {emoji:'👩',ko:'이 사람은 엄마예요.',rom:'i saram-eun eomma-yeyo.',en:'This person is Mom.'},
+   {emoji:'👵',ko:'이 사람은 할머니예요.',rom:'i saram-eun halmeoni-yeyo.',en:'This person is Grandma.'},
+   {emoji:'👴',ko:'이 사람은 할아버지예요.',rom:'i saram-eun harabeoji-yeyo.',en:'This person is Grandpa.'},
+   {emoji:'🐶',ko:'이것은 강아지예요.',rom:'igeos-eun gang-aji-yeyo.',en:'This is a puppy.'},
+   {emoji:'👶',ko:'이 아기는 귀여워요!',rom:'i agi-neun gwiyeowo-yo!',en:'This baby is cute!'},
+   {emoji:'❤️',ko:'우리는 가족이에요.',rom:'uri-neun gajog-ieyo.',en:'We are a family.'},
+ ]},
+ {id:'colors',title:'색깔 나라',rom:'saekkkal nara',en:'Color Land',cover:'🌈',pages:[
+   {emoji:'❤️',ko:'이것은 빨간색이에요.',rom:'igeos-eun ppalgansaeg-ieyo.',en:'This is red.'},
+   {emoji:'💛',ko:'이것은 노란색이에요.',rom:'igeos-eun noransaeg-ieyo.',en:'This is yellow.'},
+   {emoji:'💙',ko:'이것은 파란색이에요.',rom:'igeos-eun paransaeg-ieyo.',en:'This is blue.'},
+   {emoji:'💚',ko:'이것은 초록색이에요.',rom:'igeos-eun choroksaeg-ieyo.',en:'This is green.'},
+   {emoji:'💜',ko:'이것은 보라색이에요.',rom:'igeos-eun borasaeg-ieyo.',en:'This is purple.'},
+   {emoji:'🩷',ko:'이것은 분홍색이에요.',rom:'igeos-eun bunhongsaeg-ieyo.',en:'This is pink.'},
+   {emoji:'🌈',ko:'무지개는 예뻐요!',rom:'mujigae-neun yeppeo-yo!',en:'The rainbow is pretty!'},
+ ]},
+ {id:'animals',title:'동물 친구들',rom:'dongmul chingudeul',en:'Animal Friends',cover:'🐰',pages:[
+   {emoji:'🐶',ko:'멍멍! 강아지예요.',rom:'meong-meong! gang-aji-yeyo.',en:'Woof woof! It’s a puppy.'},
+   {emoji:'🐱',ko:'야옹! 고양이예요.',rom:'yaong! goyang-i-yeyo.',en:'Meow! It’s a cat.'},
+   {emoji:'🐰',ko:'깡충깡충! 토끼예요.',rom:'kkangchung-kkangchung! tokki-yeyo.',en:'Hop hop! It’s a bunny.'},
+   {emoji:'🐻',ko:'어흥! 곰이에요.',rom:'eoheung! gom-ieyo.',en:'Roar! It’s a bear.'},
+   {emoji:'🐦',ko:'짹짹! 새예요.',rom:'jjaek-jjaek! sae-yeyo.',en:'Tweet tweet! It’s a bird.'},
+   {emoji:'🐟',ko:'퐁당! 물고기예요.',rom:'pongdang! mulgogi-yeyo.',en:'Splash! It’s a fish.'},
+   {emoji:'🥰',ko:'동물 친구들이 좋아요.',rom:'dongmul chingu-deul-i joh-a-yo.',en:'I like animal friends.'},
+ ]},
+ {id:'numbers',title:'숫자 놀이',rom:'sutja nori',en:'Number Play',cover:'🔢',pages:[
+   {emoji:'❤️',ko:'하나! 하트 하나.',rom:'hana! hateu hana.',en:'One! One heart.'},
+   {emoji:'❤️❤️',ko:'둘! 하트 두 개.',rom:'dul! hateu du gae.',en:'Two! Two hearts.'},
+   {emoji:'❤️❤️❤️',ko:'셋! 하트 세 개.',rom:'set! hateu se gae.',en:'Three! Three hearts.'},
+   {emoji:'❤️❤️❤️❤️',ko:'넷! 하트 네 개.',rom:'net! hateu ne gae.',en:'Four! Four hearts.'},
+   {emoji:'❤️❤️❤️❤️❤️',ko:'다섯! 하트 다섯 개.',rom:'daseot! hateu daseot gae.',en:'Five! Five hearts.'},
+   {emoji:'💕',ko:'사랑해요, 하나부터 다섯까지!',rom:'saranghaeyo, hanabuteo daseot-kkaji!',en:'I love you, from one to five!'},
+ ]},
+];
+
 /* jamo tables for the block builder (standard Unicode composition order) */
 const INITS='ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
 const INIT_ROM=['g','kk','n','d','tt','r','m','b','pp','s','ss','','j','jj','ch','k','t','p','h'];
@@ -965,7 +1098,7 @@ const V_LAYOUT={'ㅏ':'right','ㅑ':'right','ㅓ':'right','ㅕ':'right','ㅣ':'r
 
 /* ============================== state ============================== */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-let store={known:[],got:[],fav:[],best:{},theme:null};
+let store={known:[],got:[],fav:[],best:{},theme:null,booksDone:[],lastTab:null};
 try{const raw=localStorage.getItem('kk.v1'); if(raw) store=Object.assign(store,JSON.parse(raw));}catch(e){}
 function save(){try{localStorage.setItem('kk.v1',JSON.stringify(store));}catch(e){}}
 
@@ -1018,19 +1151,57 @@ function say(txt,rate){
   }catch(e){}
 }
 
+/* ============================== pronunciation helpers ============================== */
+/* Splits Korean text into its syllable blocks, and the "say it like" guide into
+   matching chunks, so every phrase can show a tap-to-hear map: one Korean
+   block ↔ one plain-English chunk. Falls back to nothing if counts ever drift. */
+function hangulSyllables(str){
+  return [...str].filter(ch=>{const c=ch.codePointAt(0);return c>=0xAC00&&c<=0xD7A3;});
+}
+function sayChunks(str){
+  return str.split(/[\s\-·\/]+/).map(s=>s.trim()).filter(Boolean);
+}
+function pronounceMap(p){
+  const chars=hangulSyllables(p.ko), chunks=sayChunks(p.say);
+  if(!chars.length||chars.length!==chunks.length)return [];
+  return chars.map((ch,i)=>({ch,seg:chunks[i],stressed:chunks[i]===chunks[i].toUpperCase()&&chunks[i]!==chunks[i].toLowerCase()}));
+}
+/* Beat-by-beat playback: says each syllable slowly on its own (the way a
+   teacher sounds out a new word), then the whole phrase together. */
+function sayBeats(text){
+  if(!('speechSynthesis' in window)){toast('This device can’t speak — lean on the “say it like” guides 💗');return;}
+  const chars=hangulSyllables(text);
+  speechSynthesis.cancel();
+  if(!chars.length){say(text,0.6);return;}
+  let i=0;
+  function step(){
+    if(i>=chars.length){
+      const u=new SpeechSynthesisUtterance(text);u.lang='ko-KR';if(koVoice)u.voice=koVoice;u.rate=0.78;
+      speechSynthesis.speak(u);
+      return;
+    }
+    const u=new SpeechSynthesisUtterance(chars[i]);u.lang='ko-KR';if(koVoice)u.voice=koVoice;u.rate=0.5;
+    u.onend=()=>{i++;setTimeout(step,120);};
+    u.onerror=()=>{i++;setTimeout(step,120);};
+    speechSynthesis.speak(u);
+  }
+  step();
+}
+
 /* ============================== toast ============================== */
 let toastTimer=null;
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3400);}
 
 /* ============================== tabs ============================== */
-const TABS=['start','hangul','read','sweet','practice'];
+const TABS=['start','hangul','read','sweet','books','practice'];
 function showTab(id,push){
   if(!TABS.includes(id))id='start';
   TABS.forEach(t=>{$('#'+t).hidden=(t!==id);});
   $$('.nav [role="tab"]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===id)));
   if(push!==false){try{history.replaceState(null,'','#'+id);}catch(e){}}
   window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
-  if(id==='start'){replayHero();}
+  if(id==='start'){replayHero();renderResume();renderStrip();}
+  else{store.lastTab=id;save();}
 }
 $$('.nav [role="tab"]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
 $$('[data-goto]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.goto)));
@@ -1086,9 +1257,10 @@ function renderLetters(filter){
         '<span class="glyph ko">'+l.ch+'</span>'+
         '<span class="lmeta"><span class="lsound">'+l.sound+'</span><span class="lname ko">'+l.name+'</span></span>'+
       '</button>'+
+      '<div class="lcard-like">'+l.like+'</div>'+
       '<div class="lcard-detail">'+
         '<div class="hookbox"><span class="hlabel">🧠 hook</span>'+l.hook+'</div>'+
-        '<div class="exw"><button class="speak-sm" data-s="'+l.ex[0]+'" aria-label="Hear '+l.ex[0]+'">🔊</button><span><b class="ko">'+l.ex[0]+'</b> '+l.ex[1]+' · '+l.ex[2]+'</span></div>'+
+        '<div class="exw"><button class="speak-sm" data-s="'+l.ex[0]+'" aria-label="Hear '+l.ex[0]+'">🔊</button><button class="speak-sm" data-s="'+l.ex[0]+'" data-slow="1" aria-label="Hear '+l.ex[0]+' slowly">🐢</button><span><b class="ko">'+l.ex[0]+'</b> '+l.ex[1]+' · '+l.ex[2]+'</span></div>'+
       '</div>'+
       '<div class="lcard-foot">'+
         '<button class="hear" data-s="'+(l.type==='c'||l.type==='d'?l.ex[0]:l.ch)+'">🔊 hear</button>'+
@@ -1098,7 +1270,7 @@ function renderLetters(filter){
       const open=card.classList.toggle('open');
       card.querySelector('.lcard-head').setAttribute('aria-expanded',String(open));
     });
-    card.querySelectorAll('[data-s]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();say(b.dataset.s);}));
+    card.querySelectorAll('[data-s]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();say(b.dataset.s,b.dataset.slow?0.5:undefined);}));
     card.querySelector('.heart').addEventListener('click',()=>{
       const i=store.known.indexOf(id);
       if(i>=0){store.known.splice(i,1);}else{store.known.push(id);}
@@ -1152,7 +1324,7 @@ renderBuilder();
 
 /* ============================== decode & first reads ============================== */
 $$('.dblock').forEach(d=>d.addEventListener('click',()=>{d.classList.toggle('open');say(d.dataset.syl);}));
-$$('[data-say]').forEach(b=>b.addEventListener('click',()=>say(b.dataset.say)));
+$$('[data-say]').forEach(b=>b.addEventListener('click',()=>sayBeats(b.dataset.say)));
 WORDS.forEach(([ko,rom,mean])=>{
   const b=document.createElement('button');b.className='wchip';
   b.innerHTML='<b class="ko">'+ko+'</b> <span class="reveal">'+rom+' · '+mean+' ✓</span>';
@@ -1175,13 +1347,20 @@ function renderPhrases(){
     card.className='pcard'+(got?' got':'');
     let dots='';for(let i=1;i<=3;i++)dots+='<i'+(i<=p.lvl?' class="on"':'')+'></i>';
     const lvlName=['','first week','warming up','showing off'][p.lvl];
+    const map=pronounceMap(p);
+    const soundmapHtml=map.length?('<div class="soundmap" aria-label="Tap a syllable to hear just that beat">'+
+      map.map(m=>'<button class="smchip'+(m.stressed?' stress':'')+'" data-ch="'+m.ch+'" aria-label="Hear '+m.ch+'"><span class="sk ko">'+m.ch+'</span><span class="sr">'+m.seg.toLowerCase()+'</span></button>').join('')+
+      '</div>') : '';
     card.innerHTML=
-      '<button class="pcard-main" aria-expanded="false">'+
-        '<span class="pcard-top"><span class="kor ko">'+p.ko+'</span><span class="cat-tag '+CAT_TAG[p.cat][0]+'">'+CAT_TAG[p.cat][1]+'</span></span>'+
-        '<div class="p-rom">'+p.rom+'</div>'+
-        '<div class="p-mean">'+p.mean+'</div>'+
-        '<div class="lvl">'+dots+'<span>'+lvlName+'</span></div>'+
-      '</button>'+
+      '<div class="pcard-main">'+
+        '<button class="pcard-click" aria-expanded="false">'+
+          '<span class="pcard-top"><span class="kor ko">'+p.ko+'</span><span class="cat-tag '+CAT_TAG[p.cat][0]+'">'+CAT_TAG[p.cat][1]+'</span></span>'+
+          '<div class="p-rom">'+p.rom+'</div>'+
+          '<div class="p-mean">'+p.mean+'</div>'+
+          '<div class="lvl">'+dots+'<span>'+lvlName+'</span></div>'+
+        '</button>'+
+        soundmapHtml+
+      '</div>'+
       '<div class="pcard-detail">'+
         '<div class="say">say it like: <b>'+p.say+'</b></div>'+
         '<div class="hookbox"><span class="hlabel">🧠 the hook</span>'+p.hook+'</div>'+
@@ -1189,17 +1368,21 @@ function renderPhrases(){
       '</div>'+
       '<div class="pcard-foot">'+
         '<button class="hear">🔊 hear</button>'+
-        '<button class="slow">🐢 slow</button>'+
+        '<button class="slow">🐢 sound it out</button>'+
         '<button class="star" aria-pressed="'+fav+'" aria-label="Favorite">'+(fav?'★':'☆')+'</button>'+
         '<button class="gotit" aria-pressed="'+got+'">'+(got?'✓ got it':'got it?')+'</button>'+
       '</div>';
-    card.querySelector('.pcard-main').addEventListener('click',()=>{
+    card.querySelector('.pcard-click').addEventListener('click',()=>{
       const open=card.classList.toggle('open');
-      card.querySelector('.pcard-main').setAttribute('aria-expanded',String(open));
+      card.querySelector('.pcard-click').setAttribute('aria-expanded',String(open));
       if(open)say(p.ko);
     });
+    card.querySelectorAll('.smchip').forEach(chip=>chip.addEventListener('click',e=>{
+      e.stopPropagation();
+      say(chip.dataset.ch,0.5);
+    }));
     card.querySelector('.hear').addEventListener('click',()=>say(p.ko));
-    card.querySelector('.slow').addEventListener('click',()=>say(p.ko,0.55));
+    card.querySelector('.slow').addEventListener('click',()=>sayBeats(p.ko));
     card.querySelector('.star').addEventListener('click',()=>{
       const i=store.fav.indexOf(p.id);
       if(i>=0)store.fav.splice(i,1);else store.fav.push(p.id);
@@ -1240,11 +1423,78 @@ $('#voiceSel').addEventListener('change',e=>{
 });
 renderPhrases();
 
+/* ============================== story time ============================== */
+let currentBook=null,currentPage=0;
+function renderBookGrid(){
+  const grid=$('#bookGrid');grid.innerHTML='';
+  BOOKS.forEach(b=>{
+    const done=(store.booksDone||[]).includes(b.id);
+    const card=document.createElement('button');
+    card.className='book-card'+(done?' done':'');
+    card.innerHTML='<div class="book-cover">'+b.cover+'</div>'+
+      '<div class="book-title ko">'+b.title+'</div>'+
+      '<div class="book-sub">'+b.rom+' · '+b.en+'</div>'+
+      '<div class="book-meta">'+b.pages.length+' pages</div>'+
+      (done?'<div class="book-done-badge">✓ finished</div>':'');
+    card.addEventListener('click',()=>openBook(b.id));
+    grid.appendChild(card);
+  });
+}
+function openBook(id){
+  currentBook=BOOKS.find(b=>b.id===id);
+  currentPage=0;
+  $('#bookGrid').hidden=true;
+  $('#bookReader').hidden=false;
+  $('#readerTitle').textContent=currentBook.title+' · '+currentBook.en;
+  renderReaderPage();
+  $('#bookReader').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function renderReaderPage(){
+  const pg=currentBook.pages[currentPage];
+  $('#readerPos').textContent=(currentPage+1)+'/'+currentBook.pages.length;
+  $('#readerEmoji').textContent=pg.emoji;
+  $('#readerKo').textContent=pg.ko;
+  $('#readerRom').textContent=pg.rom;
+  $('#readerEn').textContent=pg.en;
+  $('#readerPeek').hidden=true;
+  $('#readerPeekBtn').textContent='👀 peek meaning';
+  $('#readerDots').innerHTML=currentBook.pages.map((_,i)=>'<i'+(i===currentPage?' class="on"':'')+'></i>').join('');
+  $('#readerPrev').disabled=currentPage===0;
+  $('#readerNext').textContent=currentPage===currentBook.pages.length-1?'Finish 🎉':'Next →';
+  say(pg.ko,0.8);
+}
+$('#readerKo').addEventListener('click',()=>say(currentBook.pages[currentPage].ko,0.8));
+$('#readerHear').addEventListener('click',()=>say(currentBook.pages[currentPage].ko,0.8));
+$('#readerPeekBtn').addEventListener('click',()=>{
+  const hidden=$('#readerPeek').hidden;
+  $('#readerPeek').hidden=!hidden;
+  $('#readerPeekBtn').textContent=hidden?'🙈 hide meaning':'👀 peek meaning';
+});
+$('#readerPrev').addEventListener('click',()=>{if(currentPage>0){currentPage--;renderReaderPage();}});
+$('#readerNext').addEventListener('click',()=>{
+  if(currentPage<currentBook.pages.length-1){currentPage++;renderReaderPage();}
+  else{
+    if(!store.booksDone)store.booksDone=[];
+    if(!store.booksDone.includes(currentBook.id)){store.booksDone.push(currentBook.id);save();toast('Story finished! 📖💗');}
+    closeReader();
+  }
+});
+function closeReader(){
+  $('#bookReader').hidden=true;
+  $('#bookGrid').hidden=false;
+  renderBookGrid();
+  updateCounts();
+}
+$('#readerBack').addEventListener('click',closeReader);
+renderBookGrid();
+
 /* ============================== counts & progress ============================== */
 function updateCounts(){
   $('#letterCount').textContent='♥ '+store.known.length+'/'+LETTERS.length+' learned';
   $('#phraseCount').textContent='✓ '+store.got.length+'/'+PHRASES.length+' in your pocket';
+  $('#bookCount').textContent='📖 '+(store.booksDone||[]).length+'/'+BOOKS.length+' finished';
   renderProgress();
+  renderStrip();
 }
 function bar(label,val,max,suffix){
   const pct=max?Math.round(val/max*100):0;
@@ -1263,6 +1513,56 @@ function renderProgress(){
   $('#bestPhrases').textContent='best: '+(b.phrases!=null?b.phrases+'/8':'—');
 }
 updateCounts();
+
+/* ============================== resume dashboard ============================== */
+function renderStrip(){
+  const lp=LETTERS.length?store.known.length/LETTERS.length*100:0;
+  const pp=PHRASES.length?store.got.length/PHRASES.length*100:0;
+  const bp=BOOKS.length?(store.booksDone||[]).length/BOOKS.length*100:0;
+  const best=(store.best&&store.best.phrases)||0;
+  $('#spAlpha').style.width=lp+'%';
+  $('#svAlpha').textContent=store.known.length+'/'+LETTERS.length;
+  $('#spSweet').style.width=pp+'%';
+  $('#svSweet').textContent=store.got.length+'/'+PHRASES.length;
+  $('#spBooks').style.width=bp+'%';
+  $('#svBooks').textContent=(store.booksDone||[]).length+'/'+BOOKS.length;
+  $('#spQuiz').style.width=(best/8*100)+'%';
+  $('#svQuiz').textContent='best '+best+'/8';
+}
+function computeResume(){
+  const letterPct=store.known.length,letterMax=LETTERS.length;
+  const phrasePct=store.got.length,phraseMax=PHRASES.length;
+  const booksDone=(store.booksDone||[]).length,booksMax=BOOKS.length;
+  const bestPhrases=(store.best&&store.best.phrases)||0;
+  if(!store.lastTab&&letterPct===0&&phrasePct===0&&booksDone===0){
+    return {tab:'hangul',eyebrow:'Ready when you are',title:'Let’s learn your first letters',
+      status:'35 letter cards, each with a shape + sound hook. Takes about 90 minutes.',cta:'Start with the alphabet'};
+  }
+  const tab=TABS.includes(store.lastTab)&&store.lastTab!=='start'?store.lastTab:'hangul';
+  const info={
+    hangul:{eyebrow:'Pick up where you left off',title:'Back to the alphabet',
+      status:letterPct+'/'+letterMax+' letters learned so far.',cta:'Continue the alphabet'},
+    read:{eyebrow:'Pick up where you left off',title:'Back to reading blocks',
+      status:'Keep stacking letters into syllables.',cta:'Continue reading'},
+    sweet:{eyebrow:'Pick up where you left off',title:'Back to sweet talk',
+      status:phrasePct+'/'+phraseMax+' phrases in your pocket.',cta:'Continue sweet talk'},
+    books:{eyebrow:'Pick up where you left off',title:'Back to story time',
+      status:booksDone+'/'+booksMax+' stories finished.',cta:'Continue reading stories'},
+    practice:{eyebrow:'Pick up where you left off',title:'Back to practice',
+      status:'Best score so far: '+bestPhrases+'/8.',cta:'Continue practice'},
+  };
+  return Object.assign({tab},info[tab]||info.hangul);
+}
+function renderResume(){
+  const r=computeResume();
+  $('#resumeEyebrow').textContent=r.eyebrow;
+  $('#resumeTitle').textContent=r.title;
+  $('#resumeStatus').textContent=r.status;
+  $('#resumeBtn').textContent=r.cta;
+  $('#resumeBtn').onclick=()=>showTab(r.tab);
+}
+const isNewUser=store.known.length===0&&store.got.length===0&&(store.booksDone||[]).length===0;
+$('.tour').open=isNewUser;
 
 /* ============================== quiz ============================== */
 const QLEN=8;
