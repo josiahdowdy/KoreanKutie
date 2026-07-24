@@ -17,10 +17,11 @@ GitHub Pages workflow in [`.github/workflows/pages.yml`](.github/workflows/pages
 
 | Section | What it does |
 |---|---|
-| **Start** | Why Hangul takes a weekend, how the memory system works, your route, and a rotating "phrase of the day for her" |
-| **Alphabet (한글)** | All 35 letter cards you need — shape stories + sound hooks, tap-to-hear audio, filters by group, a composition chart, and the 7 romanization sound traps |
-| **Read (읽기)** | Interactive syllable **block builder** (assemble real Korean blocks from letters), decode 사랑해 piece by piece, and a "first reads" self-test |
-| **Sweet talk (달콤한 말)** | 28 phrases across pet names, love notes, compliments, daily care, and basics — every one with a sound-alike **memory hook**, a "say it like" guide, politeness notes, favorites, and audio (normal + slow) |
+| **Start** | A resume dashboard that jumps straight to wherever you left off, a progress strip across all four sections, a rotating "phrase of the day for her," and a collapsible 60-second tour for first-time visitors |
+| **Alphabet (한글)** | All 35 letter cards you need — shape stories + sound hooks, a plain-English "sounds like" line on every card, tap-to-hear audio (normal + slow), filters by group, a composition chart, and the sound traps (including the real "unaspirated consonant" trick: say "spy/sky/star" to feel the Korean tense consonants) |
+| **Read (읽기)** | Interactive syllable **block builder** (assemble real Korean blocks from letters), decode 사랑해 piece by piece with beat-by-beat audio, and a "first reads" self-test |
+| **Sweet talk (달콤한 말)** | 28 phrases across pet names, love notes, compliments, daily care, and basics — every one with a sound-alike **memory hook**, a tap-to-hear **syllable map** (each Korean block paired with its exact sound, stressed beat highlighted), a "🐢 sound it out" slow syllable-by-syllable readout, politeness notes, and favorites |
+| **Stories (동화)** | Four short illustrated picture books (Family, Colors, Animals, Numbers) — one emoji picture + one simple sentence per page, tap to hear, tap to peek the translation, finish to track progress |
 | **Practice (연습)** | Three 8-question quiz decks (letters, reading, phrases), saved best scores, and progress bars |
 
 Audio uses your device's built-in Korean text-to-speech. The app **ranks the available
@@ -39,6 +40,22 @@ browser.
 | **Windows (Edge/other)** | Settings → Time & Language → Speech → Add voices → Korean |
 
 After installing a voice, reload the app and pick it under **🔊 voice** in the Sweet Talk tab.
+
+### Saying it like a native speaker, not just reading romanization
+
+"Sarang means love" doesn't tell you *how* to say it — so every phrase in Sweet Talk
+shows a tap-to-hear **syllable map**: each Korean block sits directly above its exact
+sound (사 / 랑 / 해 → sah / rahng / **HEH**), individually tappable, with the beat that
+gets a touch more emphasis highlighted. Press **🐢 sound it out** and the app speaks each
+syllable slowly on its own, then the whole phrase together — the same way a teacher
+walks you through a new word.
+
+The single best "say it like a true Korean" tip in the app: Korean is **syllable-timed**
+— every block gets roughly the same length, like a metronome, unlike English's
+one-strong-syllable stress. And for the tense consonants (ㄲ ㄸ ㅃ ㅆ ㅉ) that trip up
+every beginner, say the English words **"spy," "sky," "star"** and isolate just the
+p/k/t — that unaspirated sound *is* the Korean tense consonant, no special mouth
+position needed.
 
 ## The memory method (why the silly hooks work)
 
