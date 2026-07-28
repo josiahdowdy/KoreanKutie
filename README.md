@@ -22,7 +22,7 @@ GitHub Pages workflow in [`.github/workflows/pages.yml`](.github/workflows/pages
 | **Read (읽기)** | Interactive syllable **block builder** (assemble real Korean blocks from letters), decode 사랑해 piece by piece with beat-by-beat audio, and a "first reads" self-test |
 | **Sweet talk (달콤한 말)** | 28 phrases across pet names, love notes, compliments, daily care, and basics — every one with a sound-alike **memory hook**, a tap-to-hear **syllable map** (each Korean block paired with its exact sound, stressed beat highlighted), a "🐢 sound it out" slow syllable-by-syllable readout, politeness notes, and favorites |
 | **Stories (동화)** | Four short illustrated picture books (Family, Colors, Animals, Numbers) — one emoji picture + one simple sentence per page, tap to hear, tap to peek the translation, finish to track progress |
-| **Practice (연습)** | Three 8-question quiz decks (letters, reading, phrases), saved best scores, and progress bars |
+| **Practice (연습)** | Four 8-question quiz decks — letters, reading, phrases, and **Sound-alikes** (type the English word a Korean loanword sounds like, across Romance/Countries/Colors/Food categories) — with saved best scores and progress bars |
 
 Audio uses your device's built-in Korean text-to-speech. The app **ranks the available
 Korean voices and auto-picks the most natural one** (premium/neural/cloud voices first,
