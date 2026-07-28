@@ -442,8 +442,9 @@ blockquote cite{display:block;font-style:normal;font-size:12px;color:var(--mut);
 .reader-nav .btn:disabled{opacity:.4;pointer-events:none}
 
 /* ---------- practice ---------- */
-.deck-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.deck-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
 .deck{background:var(--card);border:1px solid var(--line-soft);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.deck-cats{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .deck .dic{font-size:24px}
 .deck b{font-family:'Fredoka',ui-rounded,system-ui,sans-serif;font-size:16.5px}
 .deck p{font-size:13px;color:var(--ink2)}
@@ -462,6 +463,12 @@ blockquote cite{display:block;font-style:normal;font-size:12px;color:var(--mut);
 .qopt.correct{background:var(--teal-soft);border-color:var(--teal);color:var(--ink)}
 .qopt.wrong{background:var(--rose-soft);border-color:var(--rose);opacity:.85}
 .qopt:disabled{cursor:default}
+.quiz-text-form{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.quiz-text-input{flex:1;min-width:160px;border:1.5px solid var(--line);border-radius:13px;padding:13px 15px;font-size:15.5px;font-weight:600;font:inherit;color:var(--ink);background:var(--card2)}
+.quiz-text-input:focus-visible{outline:2.5px solid var(--focus);outline-offset:1px}
+.quiz-text-input.correct{background:var(--teal-soft);border-color:var(--teal);color:var(--ink)}
+.quiz-text-input.wrong{background:var(--rose-soft);border-color:var(--rose)}
+.quiz-text-input:disabled{opacity:1}
 .quiz-fb{margin-top:14px;font-size:14px;min-height:24px;color:var(--ink2)}
 .quiz-fb b{color:var(--ink)}
 .quiz-end{text-align:center;padding:14px 0 6px}
@@ -607,7 +614,6 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
   </div>
   <div class="card">
     <h3>The whole alphabet in one bar</h3>
-    <p class="note">40 letters exist, but the 24 <b>basics</b> (consonants + vowels) unlock nearly everything. Tap a segment to jump to that group.</p>
     <div class="bar-chart" role="img" aria-label="Hangul composition: 14 basic consonants, 10 basic vowels, 5 tense twin consonants, 11 combo vowels — 40 letters total">
       <div class="bar-track">
         <button class="bar-seg s1" style="flex:14" data-filter="c" title="Basic consonants — 14">14</button>
@@ -864,6 +870,16 @@ footer{border-top:1px solid var(--line-soft);margin-top:30px}
       <span class="best" id="bestPhrases">best: —</span>
       <button class="btn btn-primary" data-deck="phrases">Start round</button>
     </div>
+    <div class="deck">
+      <span class="dic">🔤</span><b>Sound-alikes</b>
+      <p>Read the Hangul, type the English word it sounds like.</p>
+      <div class="deck-cats">
+        <button class="chip" data-sa-cat="romance">Romance</button>
+        <button class="chip" data-sa-cat="countries">Countries</button>
+        <button class="chip" data-sa-cat="colors">Colors</button>
+        <button class="chip" data-sa-cat="food">Food</button>
+      </div>
+    </div>
   </div>
 
   <div class="card quiz-card" id="quizCard" hidden>
@@ -1050,6 +1066,59 @@ const SYLLS=[
  ['꿈','kkum'],['뽀','ppo'],['우','u'],['리','ri'],['내','nae'],['커','keo'],['피','pi'],['토','to'],
  ['끼','kki'],['딸','ttal'],['밥','bap'],['잘','jal'],['꿔','kkwo'],['응','eung'],['미','mi'],['안','an'],
 ];
+
+/* Korean loanwords (외래어) that sound out almost exactly like the English
+   original — the "type the word it sounds like" practice deck. */
+const SOUNDALIKES={
+ romance:[
+  {ko:'데이트',rom:'deiteu',en:'date'},
+  {ko:'러브',rom:'reobeu',en:'love'},
+  {ko:'키스',rom:'kiseu',en:'kiss'},
+  {ko:'허그',rom:'heogeu',en:'hug'},
+  {ko:'커플',rom:'keopeul',en:'couple'},
+  {ko:'하트',rom:'hateu',en:'heart'},
+  {ko:'로맨틱',rom:'romaentik',en:'romantic'},
+  {ko:'허니',rom:'heoni',en:'honey'},
+  {ko:'프러포즈',rom:'peureopojeu',en:'propose'},
+  {ko:'소울메이트',rom:'soulmeiteu',en:'soulmate'},
+ ],
+ countries:[
+  {ko:'캐나다',rom:'kaenada',en:'canada'},
+  {ko:'브라질',rom:'beurajil',en:'brazil'},
+  {ko:'러시아',rom:'reosia',en:'russia'},
+  {ko:'스페인',rom:'seupein',en:'spain'},
+  {ko:'인도',rom:'indo',en:'india'},
+  {ko:'멕시코',rom:'meksiko',en:'mexico'},
+  {ko:'이집트',rom:'ijipteu',en:'egypt'},
+  {ko:'케냐',rom:'kenya',en:'kenya'},
+  {ko:'그리스',rom:'geuriseu',en:'greece'},
+  {ko:'베트남',rom:'beteunam',en:'vietnam'},
+ ],
+ colors:[
+  {ko:'핑크',rom:'pingkeu',en:'pink'},
+  {ko:'블루',rom:'beullu',en:'blue'},
+  {ko:'그린',rom:'geurin',en:'green'},
+  {ko:'옐로우',rom:'yellou',en:'yellow'},
+  {ko:'퍼플',rom:'peopeul',en:'purple'},
+  {ko:'블랙',rom:'beullaek',en:'black'},
+  {ko:'화이트',rom:'hwaiteu',en:'white'},
+  {ko:'그레이',rom:'geurei',en:'gray'},
+  {ko:'브라운',rom:'beuraun',en:'brown'},
+  {ko:'골드',rom:'goldeu',en:'gold'},
+ ],
+ food:[
+  {ko:'피자',rom:'pija',en:'pizza'},
+  {ko:'케이크',rom:'keikeu',en:'cake'},
+  {ko:'초콜릿',rom:'chokollit',en:'chocolate'},
+  {ko:'아이스크림',rom:'aiseukeurim',en:'ice cream'},
+  {ko:'커피',rom:'keopi',en:'coffee'},
+  {ko:'바나나',rom:'banana',en:'banana'},
+  {ko:'에그',rom:'egeu',en:'egg'},
+  {ko:'버터',rom:'beoteo',en:'butter'},
+  {ko:'치즈',rom:'chijeu',en:'cheese'},
+  {ko:'햄버거',rom:'haembeogeo',en:'hamburger'},
+ ],
+};
 
 /* simple illustrated picture books — one sentence + one picture per page */
 const BOOKS=[
@@ -1514,7 +1583,11 @@ function renderProgress(){
     bar('phrases pocketed',store.got.length,PHRASES.length,'/'+PHRASES.length)+
     bar('letters quiz best',b.letters||0,8,'/8')+
     bar('reading quiz best',b.reading||0,8,'/8')+
-    bar('sweet talk quiz best',b.phrases||0,8,'/8');
+    bar('sweet talk quiz best',b.phrases||0,8,'/8')+
+    bar('sound-alikes: romance',b.sa_romance||0,8,'/8')+
+    bar('sound-alikes: countries',b.sa_countries||0,8,'/8')+
+    bar('sound-alikes: colors',b.sa_colors||0,8,'/8')+
+    bar('sound-alikes: food',b.sa_food||0,8,'/8');
   $('#bestLetters').textContent='best: '+(b.letters!=null?b.letters+'/8':'—');
   $('#bestReading').textContent='best: '+(b.reading!=null?b.reading+'/8':'—');
   $('#bestPhrases').textContent='best: '+(b.phrases!=null?b.phrases+'/8':'—');
@@ -1575,7 +1648,7 @@ $('.tour').open=isNewUser;
 const QLEN=8;
 let quiz=null;
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function buildQuestions(deck){
+function buildQuestions(deck,cat){
   if(deck==='letters'){
     const pool=LETTERS.filter(l=>l.type!=='x'||['ㅐ','ㅔ','ㅘ','ㅝ','ㅟ','ㅚ'].includes(l.ch));
     return shuffle(pool).slice(0,QLEN).map(l=>{
@@ -1589,6 +1662,13 @@ function buildQuestions(deck){
       return {prompt:'How does this block sound?',big:syl,speak:syl,answer:rom,options:shuffle([rom,...wrong]),echo:'Block cracked: '+syl+' = “'+rom+'”'};
     });
   }
+  if(deck==='soundalike'){
+    const pool=SOUNDALIKES[cat]||[];
+    return shuffle(pool).slice(0,QLEN).map(w=>({
+      type:'text',prompt:'What English word does this sound like?',big:w.ko,speak:w.ko,answer:w.en,
+      echo:w.ko+' is pronounced “'+w.rom+'” — a Korean loanword straight from English.',
+    }));
+  }
   // phrases — both directions
   return shuffle(PHRASES).slice(0,QLEN).map((p,i)=>{
     if(i%2===0){
@@ -1599,8 +1679,8 @@ function buildQuestions(deck){
     return {prompt:'How do you say: “'+p.mean+'”?',big:'💬',speak:null,answer:p.ko,options:shuffle([p.ko,...wrong]),echo:p.rom+' — '+p.hook,koOptions:true,revealSpeak:p.ko};
   });
 }
-function startQuiz(deck){
-  quiz={deck,qs:buildQuestions(deck),i:0,score:0};
+function startQuiz(deck,cat){
+  quiz={deck,cat,bestKey:cat?('sa_'+cat):deck,qs:buildQuestions(deck,cat),i:0,score:0};
   $('#quizCard').hidden=false;
   $('#quizCard').scrollIntoView({behavior:'smooth',block:'start'});
   renderQuestion();
@@ -1610,6 +1690,22 @@ function renderQuestion(){
   $('#quizPos').textContent=(quiz.i+1)+'/'+quiz.qs.length;
   $('#quizProg').style.width=(quiz.i/quiz.qs.length*100)+'%';
   const body=$('#quizBody');
+  if(q.type==='text'){
+    body.innerHTML=
+      '<div class="quiz-q">'+q.prompt+'</div>'+
+      '<div class="quiz-big ko">'+q.big+'<button class="speak-sm" id="qSpeak" aria-label="Hear it">🔊</button></div>'+
+      '<form id="qTextForm" class="quiz-text-form" autocomplete="off">'+
+        '<input type="text" id="qTextInput" class="quiz-text-input" placeholder="Type the English word…" aria-label="Your answer">'+
+        '<button type="submit" class="btn btn-primary">Check</button>'+
+      '</form>'+
+      '<div class="quiz-fb" id="qFb"></div>';
+    $('#qSpeak').addEventListener('click',()=>say(q.speak));
+    say(q.speak);
+    const input=$('#qTextInput');
+    input.focus();
+    $('#qTextForm').addEventListener('submit',e=>{e.preventDefault();answerText(input.value);});
+    return;
+  }
   body.innerHTML=
     '<div class="quiz-q">'+q.prompt+'</div>'+
     '<div class="quiz-big ko">'+q.big+(q.speak?'<button class="speak-sm" id="qSpeak" aria-label="Hear it">🔊</button>':'')+'</div>'+
@@ -1622,6 +1718,16 @@ function renderQuestion(){
     $('#qOpts').appendChild(b);
   });
 }
+function normAnswer(s){return (s||'').toLowerCase().replace(/[^a-z]/g,'');}
+function answerText(raw){
+  const q=quiz.qs[quiz.i];
+  const right=normAnswer(raw)===normAnswer(q.answer);
+  const input=$('#qTextInput');
+  input.disabled=true;
+  $('#qTextForm').querySelector('button').disabled=true;
+  input.classList.add(right?'correct':'wrong');
+  finishAnswer(right,q);
+}
 function answer(btn,opt){
   const q=quiz.qs[quiz.i];
   const right=opt===q.answer;
@@ -1630,9 +1736,12 @@ function answer(btn,opt){
     if(b.textContent===q.answer)b.classList.add('correct');
     else if(b===btn)b.classList.add('wrong');
   });
+  if(q.revealSpeak)say(q.revealSpeak);
+  finishAnswer(right,q);
+}
+function finishAnswer(right,q){
   if(right){quiz.score++;$('#qFb').innerHTML='<b>'+['사랑해 that answer! 💗','최고야! (You’re the best!)','예뻐요, that brain of yours.','Correct! 잘했어 (nice work)!'][Math.floor(Math.random()*4)]+'</b> '+q.echo;}
   else{$('#qFb').innerHTML='<b>괜찮아 — it’s okay!</b> The answer: <b'+(q.koOptions?' class="ko"':'')+'>'+q.answer+'</b>. '+q.echo;}
-  if(q.revealSpeak)say(q.revealSpeak);
   $('#quizProg').style.width=((quiz.i+1)/quiz.qs.length*100)+'%';
   const next=document.createElement('button');
   next.className='btn btn-primary';next.style.marginTop='14px';
@@ -1642,9 +1751,9 @@ function answer(btn,opt){
   next.focus();
 }
 function endQuiz(){
-  const prev=store.best[quiz.deck]||0;
+  const prev=store.best[quiz.bestKey]||0;
   const isBest=quiz.score>prev;
-  if(isBest){store.best[quiz.deck]=quiz.score;save();}
+  if(isBest){store.best[quiz.bestKey]=quiz.score;save();}
   const line=quiz.score===quiz.qs.length?'Perfect! Go collect a kiss — 뽀뽀해 줘 has never been more earned.'
     :quiz.score>=6?'Strong! One more round tomorrow and it’s locked in.'
     :quiz.score>=4?'Solid start — replay the hooks out loud, they do the heavy lifting.'
@@ -1655,11 +1764,12 @@ function endQuiz(){
     '<div class="hero-cta" style="justify-content:center"><button class="btn btn-primary" id="qAgain">Play again</button>'+
     '<button class="btn btn-ghost" id="qDone">Done</button></div></div>';
   $('#quizPos').textContent='done';
-  $('#qAgain').addEventListener('click',()=>startQuiz(quiz.deck));
+  $('#qAgain').addEventListener('click',()=>startQuiz(quiz.deck,quiz.cat));
   $('#qDone').addEventListener('click',()=>{$('#quizCard').hidden=true;});
   renderProgress();
 }
 $$('[data-deck]').forEach(b=>b.addEventListener('click',()=>startQuiz(b.dataset.deck)));
+$$('[data-sa-cat]').forEach(b=>b.addEventListener('click',()=>startQuiz('soundalike',b.dataset.saCat)));
 $('#quizQuit').addEventListener('click',()=>{$('#quizCard').hidden=true;quiz=null;});
 
 /* ============================== boot ============================== */
